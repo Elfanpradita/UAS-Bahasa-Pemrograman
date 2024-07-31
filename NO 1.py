@@ -1,7 +1,6 @@
 import tkinter as tk
 from tkinter import messagebox
 
-# Fungsi untuk menghitung biaya sewa dan total bayar
 def hitung():
     try:
         kode_kamar = kode_kamar_var.get().upper()
@@ -38,7 +37,6 @@ def hitung():
         total_bayar = jumlah_bayar - ppn
         uang_kembali = uang_bayar - total_bayar
 
-        # Output hasil perhitungan
         receipt_text = (
             f"Bukti Kwitansi Pembayaran\n"
             f"=========================\n"
@@ -60,22 +58,19 @@ def hitung():
     except ValueError:
         messagebox.showerror("Error", "Input tidak valid")
 
-# Setup GUI
 root = tk.Tk()
 root.title("Hotel Sejuk Asri - Pembayaran")
 root.geometry("400x600")
-root.configure(bg="#FFA500")  # Set the background color to orange
+root.configure(bg="#FFA500")
 
-# Styling elements
 title_font = ("Arial", 16, "bold")
 label_font = ("Arial", 10)
 entry_font = ("Arial", 10)
 btn_font = ("Arial", 10, "bold")
 result_font = ("Arial", 10, "bold")
-color_bg = "#FFA500"  # Orange background color
+color_bg = "#FFA500"
 color_fg = "black"
 
-# Input Frame
 input_frame = tk.Frame(root, bg=color_bg, pady=10)
 input_frame.pack(fill="both", expand=True)
 
@@ -108,14 +103,12 @@ uang_bayar_entry.grid(row=6, column=1, padx=10, pady=5)
 
 tk.Button(input_frame, text="Hitung Pembayaran", font=btn_font, command=hitung, bg="#4CAF50", fg="white").grid(row=7, column=0, columnspan=2, pady=10)
 
-# Output Frame
 output_frame = tk.Frame(root, bg=color_bg)
 output_frame.pack(fill="both", expand=True)
 
 hasil_label = tk.Label(output_frame, text="", font=result_font, bg=color_bg, fg=color_fg, justify="left")
 hasil_label.pack(padx=10, pady=10, fill="both", expand=True)
 
-# Control buttons
 control_frame = tk.Frame(root, bg=color_bg)
 control_frame.pack(fill="both", expand=True)
 
