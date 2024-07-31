@@ -1,10 +1,8 @@
 import tkinter as tk
 from tkinter import messagebox
 
-# Inisialisasi data barang
 data_barang = {}
 
-# Fungsi untuk menambah data barang
 def tambah_barang():
     nama = nama_barang_entry.get().strip()
     harga = harga_barang_entry.get().strip()
@@ -23,14 +21,12 @@ def tambah_barang():
     clear_entries()
     tampil_barang()
 
-# Fungsi untuk menampilkan data barang
 def tampil_barang():
     output = "Data Barang:\n"
     for nama, info in data_barang.items():
         output += f"{nama}: Harga - Rp. {info['harga']}, Stok - {info['stok']}\n"
     data_barang_label.config(text=output)
 
-# Fungsi untuk menghapus data barang
 def hapus_barang():
     nama = nama_barang_entry.get().strip()
     if nama in data_barang:
@@ -41,7 +37,6 @@ def hapus_barang():
         messagebox.showerror("Error", f"Barang '{nama}' tidak ditemukan.")
     clear_entries()
 
-# Fungsi untuk mencari data barang
 def cari_barang():
     nama = nama_barang_entry.get().strip()
     if nama in data_barang:
@@ -51,7 +46,6 @@ def cari_barang():
         messagebox.showerror("Error", f"Barang '{nama}' tidak ditemukan.")
     clear_entries()
 
-# Fungsi untuk menghitung jumlah pembelian
 def beli_barang():
     nama = nama_barang_entry.get().strip()
     jumlah = jumlah_barang_entry.get().strip()
@@ -74,23 +68,19 @@ def beli_barang():
         messagebox.showerror("Error", "Barang tidak ditemukan.")
     clear_entries()
 
-# Fungsi untuk membersihkan entri
 def clear_entries():
     nama_barang_entry.delete(0, tk.END)
     harga_barang_entry.delete(0, tk.END)
     stok_barang_entry.delete(0, tk.END)
     jumlah_barang_entry.delete(0, tk.END)
 
-# Setup GUI
 root = tk.Tk()
 root.title("Manajemen Barang Hotel Sejuk Asri")
-root.configure(bg="#ff6347")  # Warna latar belakang merah cerah
+root.configure(bg="#ff6347")
 
-# Gaya umum untuk label dan entry
 label_style = {"font": ("Arial", 12, "bold"), "bg": "#ff6347", "fg": "white"}
 entry_style = {"font": ("Arial", 12), "bg": "#ffe4e1", "fg": "black"}
 
-# Input Data Barang
 tk.Label(root, text="Nama Barang", **label_style).grid(row=0, column=0, padx=10, pady=5, sticky="w")
 nama_barang_entry = tk.Entry(root, **entry_style)
 nama_barang_entry.grid(row=0, column=1, padx=10, pady=5)
@@ -105,16 +95,13 @@ stok_barang_entry.grid(row=2, column=1, padx=10, pady=5)
 
 tk.Button(root, text="Tambah Barang", command=tambah_barang, font=("Arial", 12, "bold"), bg="#ff4500", fg="white").grid(row=3, column=1, pady=10)
 
-# Tampilkan Data Barang
 tk.Button(root, text="Tampil Barang", command=tampil_barang, font=("Arial", 12, "bold"), bg="#ff4500", fg="white").grid(row=4, column=1, pady=10)
 data_barang_label = tk.Label(root, text="", justify=tk.LEFT, **label_style)
 data_barang_label.grid(row=5, column=0, columnspan=2, padx=10, pady=5)
 
-# Hapus dan Cari Data Barang
 tk.Button(root, text="Hapus Barang", command=hapus_barang, font=("Arial", 12, "bold"), bg="#ff4500", fg="white").grid(row=6, column=1, pady=10)
 tk.Button(root, text="Cari Barang", command=cari_barang, font=("Arial", 12, "bold"), bg="#ff4500", fg="white").grid(row=7, column=1, pady=10)
 
-# Hitung Jumlah Pembelian
 tk.Label(root, text="Jumlah Barang", **label_style).grid(row=8, column=0, padx=10, pady=5, sticky="w")
 jumlah_barang_entry = tk.Entry(root, **entry_style)
 jumlah_barang_entry.grid(row=8, column=1, padx=10, pady=5)
