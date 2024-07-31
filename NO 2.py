@@ -1,7 +1,6 @@
 import tkinter as tk
 from tkinter import messagebox
 
-# Fungsi-fungsi untuk menghitung luas dan keliling
 def luas_segi_empat(sisi):
     return sisi ** 2
 
@@ -26,7 +25,6 @@ def luas_lingkaran(radius):
 def keliling_lingkaran(radius):
     return 2 * 3.14159 * radius
 
-# Fungsi untuk menangani perhitungan berdasarkan pilihan pengguna
 def hitung():
     pilihan = menu_var.get()
     try:
@@ -64,7 +62,6 @@ def hitung():
     except ValueError:
         messagebox.showerror("Error", "Input tidak valid")
 
-# Fungsi untuk memperbarui label input berdasarkan pilihan
 def update_input_fields():
     pilihan = menu_var.get()
     if pilihan == "Segi Empat":
@@ -103,11 +100,9 @@ def update_input_fields():
         label_3.grid()
         input_3_entry.grid()
 
-# Setup GUI
 root = tk.Tk()
 root.title("Perhitungan Bangun Datar")
 
-# Set warna latar dan font
 root.configure(bg="#f0f0f0")
 font_style = ("Helvetica", 12)
 
